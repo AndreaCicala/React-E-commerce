@@ -1,14 +1,11 @@
-import { useState, useEffect } from "react";
-import { List } from "./product";
+import { useState } from "react";
 
-export const Header = () => {
+export const Header = (props) => {
   const [search, setSearch] = useState("");
-
   const changing = (event) => {
     setSearch(event.target.value);
+    props.filter(event.target.value);
   };
-
-
 
   return (
     <header>

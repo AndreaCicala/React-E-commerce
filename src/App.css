@@ -36,6 +36,10 @@ aside ul li, ul.grid{
     list-style-type: none;
 }
 
+aside ul li a.active{
+    background-color: red;
+}
+
 a:active{
     color: red;
 }
@@ -51,6 +55,8 @@ ul.grid li.loading p,
 ul.grid li.loading h4{
     background-color: black;
 }
+
+
 
 .flex {
     display: flex;

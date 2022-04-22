@@ -34,7 +34,7 @@ const product = [
   },
 ];
 
-export const List = ({category}) => {
+export const List = (props) => {
   const [source, setSource] = useState([]);
   const [products, setProducts] = useState(product);
   const [isLoading, setLoading] = useState(true);
@@ -53,15 +53,23 @@ export const List = ({category}) => {
 
   useEffect(() => {
     const filtered = source.filter((product) => {
-      if (category === "everything") {
+      if (props.category === "everything") {
         return product;
       } else {
-        return product.category === category;
+        return product.category === props.category;
       }
     });
     setProducts(filtered);
-        // eslint-disable-next-line
-  }, [category]);
+    // eslint-disable-next-line
+  }, [props.category]);
+
+  useEffect(() => {
+    const filtered = source.filter((product) =>
+      product.title.toLowerCase().includes(props.filter.toLowerCase())
+    );
+    setProducts(filtered);
+    // eslint-disable-next-line
+  }, [props.filter]);
 
   return (
     <section>

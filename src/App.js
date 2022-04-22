@@ -2,23 +2,18 @@ import { useState } from "react";
 import { Header } from "./components/header";
 import { Sidebar } from "./components/sidebar";
 import { List } from "./components/list";
-
 import "./App.css";
 
 function App() {
   const [category, setCategory] = useState("");
-
-  const catSelection = (value) => {
-    console.log(value);
-    setCategory(value);
-  };
+  const [filter, setFilter] = useState("");
 
   return (
     <main>
-      <Header />
+      <Header filter={setFilter}/>
       <div className="flex">
-        <Sidebar catSelection={catSelection} />
-        <List category={category} />
+        <Sidebar catSelection={setCategory}/>
+        <List category={category} filter={filter}/>
       </div>
     </main>
   );
